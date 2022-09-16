@@ -4,3 +4,42 @@
     box-sizing: border-box;
 }
 
+#tools .botton-colors {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+    margin: 0 7px;
+}
+
+#tools {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 12px;
+    padding: 10px;
+    background-color: rgba(53, 51, 51, 0.698);
+}
+
+#tools .button {
+    padding: 12px;
+    margin: 0 7px;
+    border-radius: 15px;
+    outline: none;
+    background-color: rgb(52, 52, 52);
+    color: #fff;
+    cursor: pointer;
+}
+
+#selector-color{
+    margin: 0 5px;
+    width: 50px;
+    height: 50px;
+}
+
+#canvas {
+    border: 2px solid #000;
+}
