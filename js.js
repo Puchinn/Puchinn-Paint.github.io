@@ -1,6 +1,6 @@
 const canvas = document.getElementById("canvas");
 let contex = canvas.getContext("2d");
-
+const botonlimpiar = document.getElementById("boton_limpiar");
 
 let color = "black";
 let ancho = "2";
@@ -14,6 +14,9 @@ canvas.addEventListener("mousemove",draw,false);
 canvas.addEventListener("touchend",stop,false);
 canvas.addEventListener("mouseup",stop,false);
 canvas.addEventListener("mouseout",stop,false);
+
+let memoria_de_dibujo = [];
+let indice = -1;
 
 
 function start (event){
@@ -45,8 +48,38 @@ function stop(event){
         estaDibujando = false;
     }
     event.preventDefault();
+
+    if (event.type != "mouseout"){
+        memoria_de_dibujo.push(contex.getImageData(
+            0,0, canvas.width, canvas.height
+            ));
+        
+            indice += 1;
+    }
+
 }
 
 function cambiar_color (elemento){
  color = elemento.style.background;
+}
+
+
+
+function limpiar(){
+    contex.fillStyle = "white";
+    contex.clearRect(0,0, canvas.width, canvas.height);
+    contex.fillRect(0,0, canvas.width, canvas.height);
+
+    memoria_de_dibujo = [];
+    indice = -1;
+}
+
+function volver(){
+    if (indice <= 0 ) {
+        limpiar();
+    }else {
+        indice -= 1;
+        memoria_de_dibujo.pop();
+        contex.putImageData(memoria_de_dibujo[indice],0,0)
+    }
 }
