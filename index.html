@@ -10,7 +10,6 @@
 </head>
 <body>
     <main class="main">
-        <canvas id="canvas"></canvas>
         <div id="tools">
             <button class="button" id="boton_limpiar" onclick="limpiar()">Clear</button>
             <button class="button" onclick="volver()">Back</button>
@@ -24,6 +23,8 @@
             <input type="color" id="selector-color" oninput="color = this.value">
             <input type="range" id="tamaño-lapiz" min="1" max="60" oninput="ancho = this.value">
         </div>
+
+        <canvas id="canvas"></canvas>
 
     </main>
     <script src="js.js"></script>

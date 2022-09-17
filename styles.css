@@ -22,6 +22,13 @@
     border-radius: 12px;
     padding: 10px;
     background-color: rgba(53, 51, 51, 0.698);
+    width: max-content;
+    margin: 10px auto;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
 }
 
 #tools .button {
@@ -41,5 +48,6 @@
 }
 
 #canvas {
-    border: 2px solid #000;
+    position: absolute;
+    z-index: -1;
 }

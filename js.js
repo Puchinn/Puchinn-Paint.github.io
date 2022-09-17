@@ -2,6 +2,9 @@ const canvas = document.getElementById("canvas");
 let contex = canvas.getContext("2d");
 const botonlimpiar = document.getElementById("boton_limpiar");
 
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 let color = "black";
 let ancho = "2";
 let estaDibujando = false;
@@ -18,7 +21,6 @@ canvas.addEventListener("mouseout",stop,false);
 let memoria_de_dibujo = [];
 let indice = -1;
 
-
 function start (event){
     estaDibujando = true;
     contex.beginPath();
@@ -26,7 +28,6 @@ function start (event){
                     event.clientY - canvas.offsetTop);
     event.preventDefault();
 };
-
 function draw (event){
     if (estaDibujando){
         contex.lineTo(  event.clientX - canvas.offsetLeft,
@@ -40,7 +41,6 @@ function draw (event){
     }
     event.preventDefault();
 }
-
 function stop(event){
     if (estaDibujando){
         contex.stroke();
@@ -53,18 +53,12 @@ function stop(event){
         memoria_de_dibujo.push(contex.getImageData(
             0,0, canvas.width, canvas.height
             ));
-        
             indice += 1;
     }
-
 }
-
 function cambiar_color (elemento){
  color = elemento.style.background;
 }
-
-
-
 function limpiar(){
     contex.fillStyle = "white";
     contex.clearRect(0,0, canvas.width, canvas.height);
@@ -73,7 +67,6 @@ function limpiar(){
     memoria_de_dibujo = [];
     indice = -1;
 }
-
 function volver(){
     if (indice <= 0 ) {
         limpiar();
@@ -81,5 +74,4 @@ function volver(){
         indice -= 1;
         memoria_de_dibujo.pop();
         contex.putImageData(memoria_de_dibujo[indice],0,0)
-    }
-}
+}}
